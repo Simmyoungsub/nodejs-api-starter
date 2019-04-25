@@ -29,6 +29,7 @@ services:
       - "8080:8080"
       - "127.0.0.1:9229:9229" # V8 inspector for tools/run.js
       - "127.0.0.1:9230:9230" # V8 inspector for src/server.js
+    user: $USER
     volumes:
       - yarn:/home/node/.cache/yarn
       - ./build:/usr/src/app/build
