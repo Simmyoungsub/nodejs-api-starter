@@ -80,8 +80,13 @@ module.exports = task(
           switch (event) {
             // Create a directory if it doesn't exist
             case 'addDir':
-              if (src.startsWith('src') && !fs.existsSync(dest))
+              if (src.startsWith('src') && !fs.existsSync(dest)) {
                 fs.mkdirSync(dest);
+                if (dest === 'src/build') {
+                  fs.chmod(dest, 757);
+                }
+              }
+
               if (ready && onComplete) onComplete();
               break;
 
